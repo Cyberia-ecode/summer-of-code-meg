@@ -3,7 +3,7 @@ from pathlib import Path
 
 from fastapi import UploadFile
 
-from config import ADDRESS, API_PREFIX, IMAGE_PATH
+from config import ADDRESS, API_PREFIX, FILE_PATH
 from utils.encode import uuid
 from utils.storage import copy_file
 
@@ -15,7 +15,7 @@ def temp_file_name(filename: str) -> str:
 
 
 def save_as_temp_file(file: UploadFile) -> str:
-    path = f"{IMAGE_PATH}{temp_file_name(file.filename)}"
+    path = f"{FILE_PATH}{temp_file_name(file.filename)}"
     copy_file(path, file.file)
     return path
 
